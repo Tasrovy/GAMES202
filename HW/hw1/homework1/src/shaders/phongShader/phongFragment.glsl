@@ -84,25 +84,21 @@ void uniformDiskSamples( const in vec2 randomSeed ) {
 }
 
 float findBlocker( sampler2D shadowMap,  vec2 uv, float zReceiver ) {
-	return 1.0;
+  float depthSum = 0.0;
+  float depthCount = 0.0;
+  float bias = 3.0/2048.0;
+  uniformDiskSamples(uv);
+  for(int i = 0;i < BLOCKER_SEARCH_NUM_SAMPLES;i++){
+    vec2 offset = poissonDisk[i] * bias;
+    float depth = unpack(texture2D(shadowMap,uv+offset));
+    if(depth < zReceiver-0.01){
+        depthSum += depth;
+        depthCount += 1.0;
+    }
+  }
+  if(abs(depthCount-0.0)<0.1) return -1.0;
+  else return depthSum/depthCount;
 }
-
-float PCF(sampler2D shadowMap, vec4 coords) {
-  return 1.0;
-}
-
-float PCSS(sampler2D shadowMap, vec4 coords){
-
-  // STEP 1: avgblocker depth
-
-  // STEP 2: penumbra size
-
-  // STEP 3: filtering
-  
-  return 1.0;
-
-}
-
 
 float useShadowMap(sampler2D shadowMap, vec4 shadowCoord){
 
@@ -110,6 +106,38 @@ float useShadowMap(sampler2D shadowMap, vec4 shadowCoord){
 
   return step(shadowCoord.z-0.01,depth);
 }
+
+float PCF(sampler2D shadowMap, vec4 coords) {
+  float result = 0.0;
+  float bias = 3.0/2048.0;
+  uniformDiskSamples(coords.xy);
+  for(int i = 0;i < NUM_SAMPLES;i++){
+    vec2 offset = poissonDisk[i] * bias;
+    result += useShadowMap(shadowMap,vec4(coords.xy+offset,coords.z,coords.w));
+  }
+  result = result/float(NUM_SAMPLES);
+  return result;
+}
+
+float PCSS(sampler2D shadowMap, vec4 coords){
+
+  // STEP 1: avgblocker depth
+    float avgBlockerDepth = findBlocker(shadowMap,coords.xy,coords.z);
+    if(avgBlockerDepth <= -0.9) return 1.0;
+  // STEP 2: penumbra size
+    float lightSize = 0.01;
+    float penumbraSize = max((coords.z - avgBlockerDepth) / avgBlockerDepth, 0.0) * lightSize;
+  // STEP 3: filtering
+      float result = 0.0;
+      uniformDiskSamples(coords.xy);
+      for(int i = 0;i < NUM_SAMPLES;i++){
+        vec2 offset = poissonDisk[i] * penumbraSize;
+        result += useShadowMap(shadowMap,vec4(coords.xy+offset,coords.z,coords.w));
+      }
+      result = result/float(NUM_SAMPLES);
+      return result;
+}
+
 
 vec3 blinnPhong() {
   vec3 color = texture2D(uSampler, vTextureCoord).rgb;
@@ -139,9 +167,9 @@ void main(void) {
   float visibility;
   vec3 shadowCoord = vPositionFromLight.xyz/vPositionFromLight.w;
   shadowCoord = shadowCoord * 0.5 + 0.5;
-  visibility = useShadowMap(uShadowMap, vec4(shadowCoord, 1.0));
+  //visibility = useShadowMap(uShadowMap, vec4(shadowCoord, 1.0));
   //visibility = PCF(uShadowMap, vec4(shadowCoord, 1.0));
-  //visibility = PCSS(uShadowMap, vec4(shadowCoord, 1.0));
+  visibility = PCSS(uShadowMap, vec4(shadowCoord, 1.0));
 
   vec3 phongColor = blinnPhong();
 
