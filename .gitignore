@@ -2,3 +2,87 @@
 .idea
 ~$*.doc
 ~$*.docx
+# ================================
+
+# C/C++ compiled objects
+
+# ================================
+
+*.o
+*.obj
+
+# Static & dynamic libraries
+
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+
+# Executables (Windows / generic)
+
+*.exe
+*.out
+
+# ================================
+
+# CMake generated files
+
+# ================================
+
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+
+# ================================
+
+# Render outputs
+
+# ================================
+
+*.exr
+*.hdr
+
+# PNG 保留
+
+# ================================
+
+# PRT intermediate data
+
+# ================================
+
+light.txt
+transport.txt
+
+# ================================
+
+# Logs and temp
+
+# ================================
+
+*.log
+*.tmp
+*.swp
+*~
+
+# ================================
+
+# IDE files
+
+# ================================
+
+.vscode/
+.idea/
+*.vcxproj*
+*.sln
+
+# ================================
+
+# OS junk
+
+# ================================
+
+.DS_Store
+Thumbs.db
