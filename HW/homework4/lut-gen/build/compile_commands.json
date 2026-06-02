@@ -1,0 +1,26 @@
+[
+{
+  "directory": "C:/MyWay/GAMES202/HW/homework4/lut-gen/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\18\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -IC:/MyWay/GAMES202/HW/homework4/lut-gen/ext -O0 -g -Xclang -gcodeview -std=gnu++14 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\lut-Emu-MC.dir\\Emu_MC.cpp.obj -c C:\\MyWay\\GAMES202\\HW\\homework4\\lut-gen\\Emu_MC.cpp",
+  "file": "C:/MyWay/GAMES202/HW/homework4/lut-gen/Emu_MC.cpp",
+  "output": "C:/MyWay/GAMES202/HW/homework4/lut-gen/build/CMakeFiles/lut-Emu-MC.dir/Emu_MC.cpp.obj"
+},
+{
+  "directory": "C:/MyWay/GAMES202/HW/homework4/lut-gen/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\18\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -IC:/MyWay/GAMES202/HW/homework4/lut-gen/ext -O0 -g -Xclang -gcodeview -std=gnu++14 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\lut-Eavg-MC.dir\\Eavg_MC.cpp.obj -c C:\\MyWay\\GAMES202\\HW\\homework4\\lut-gen\\Eavg_MC.cpp",
+  "file": "C:/MyWay/GAMES202/HW/homework4/lut-gen/Eavg_MC.cpp",
+  "output": "C:/MyWay/GAMES202/HW/homework4/lut-gen/build/CMakeFiles/lut-Eavg-MC.dir/Eavg_MC.cpp.obj"
+},
+{
+  "directory": "C:/MyWay/GAMES202/HW/homework4/lut-gen/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\18\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -IC:/MyWay/GAMES202/HW/homework4/lut-gen/ext -O0 -g -Xclang -gcodeview -std=gnu++14 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\lut-Emu-IS.dir\\Emu_IS.cpp.obj -c C:\\MyWay\\GAMES202\\HW\\homework4\\lut-gen\\Emu_IS.cpp",
+  "file": "C:/MyWay/GAMES202/HW/homework4/lut-gen/Emu_IS.cpp",
+  "output": "C:/MyWay/GAMES202/HW/homework4/lut-gen/build/CMakeFiles/lut-Emu-IS.dir/Emu_IS.cpp.obj"
+},
+{
+  "directory": "C:/MyWay/GAMES202/HW/homework4/lut-gen/build",
+  "command": "C:\\PROGRA~1\\MICROS~4\\18\\COMMUN~1\\VC\\Tools\\Llvm\\x64\\bin\\clang.exe -IC:/MyWay/GAMES202/HW/homework4/lut-gen/ext -O0 -g -Xclang -gcodeview -std=gnu++14 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -o CMakeFiles\\lut-Eavg-IS.dir\\Eavg_IS.cpp.obj -c C:\\MyWay\\GAMES202\\HW\\homework4\\lut-gen\\Eavg_IS.cpp",
+  "file": "C:/MyWay/GAMES202/HW/homework4/lut-gen/Eavg_IS.cpp",
+  "output": "C:/MyWay/GAMES202/HW/homework4/lut-gen/build/CMakeFiles/lut-Eavg-IS.dir/Eavg_IS.cpp.obj"
+}
+]
